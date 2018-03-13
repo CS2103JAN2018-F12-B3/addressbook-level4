@@ -41,6 +41,7 @@ import seedu.address.model.Model;
 import seedu.address.testutil.TypicalPersons;
 import seedu.address.ui.BrowserPanel;
 import seedu.address.ui.CommandBox;
+import seedu.address.ui.ResultDisplay;
 
 /**
  * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
@@ -53,6 +54,10 @@ public abstract class AddressBookSystemTest {
     private static final List<String> COMMAND_BOX_DEFAULT_STYLE = Arrays.asList("text-input", "text-field");
     private static final List<String> COMMAND_BOX_ERROR_STYLE =
             Arrays.asList("text-input", "text-field", CommandBox.ERROR_STYLE_CLASS);
+    private static final List<String> RESULT_DISPLAY_DEFAULT_STYLE =
+            Arrays.asList("text-input", "text-area", "result-display");
+    private static final List<String> RESULT_DISPLAY_ERROR_STYLE =
+            Arrays.asList("text-input", "text-area", "result-display", ResultDisplay.ERROR_STYLE_CLASS);
 
     private MainWindowHandle mainWindowHandle;
     private TestApp testApp;
@@ -245,6 +250,20 @@ public abstract class AddressBookSystemTest {
      */
     protected void assertCommandBoxShowsErrorStyle() {
         assertEquals(COMMAND_BOX_ERROR_STYLE, getCommandBox().getStyleClass());
+    }
+
+    /**
+     * Asserts that the result display's shows the default style.
+     */
+    protected void assertResultDisplayShowsDefaultStyle() {
+        assertEquals(RESULT_DISPLAY_DEFAULT_STYLE, getResultDisplay().getStyleClass());
+    }
+
+    /**
+     * Asserts that the result display's shows the error style.
+     */
+    protected void assertResultDisplayShowsErrorStyle() {
+        assertEquals(RESULT_DISPLAY_ERROR_STYLE, getResultDisplay().getStyleClass());
     }
 
     /**
