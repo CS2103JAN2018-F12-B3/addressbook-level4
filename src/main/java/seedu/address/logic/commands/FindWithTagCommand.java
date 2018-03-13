@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.TagContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in address book whose tags contain any of the argument keywords.
@@ -15,9 +15,9 @@ public class FindWithTagCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " friends, owesMoney";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final TagContainsKeywordsPredicate predicate;
 
-    public FindWithTagCommand(NameContainsKeywordsPredicate predicate) {
+    public FindWithTagCommand(TagContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
