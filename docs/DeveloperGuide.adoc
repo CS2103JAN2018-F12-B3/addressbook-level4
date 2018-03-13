@@ -782,13 +782,14 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
+* has a need to keep track a significant number of social media platforms of contacts
+* has a need to view the latest scoop of various people's social life
 * prefer desktop apps over other types
 * can type fast
 * prefers typing over mouse input
 * is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: one-stop access to multiple social media platforms
 
 [appendix]
 == User Stories
@@ -806,7 +807,65 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |see the page of the specified platform of a person |get information of the person with my preferred social media platform
+
+|`* * *` |user |delete one of social media platforms of a person |remove entries that I no longer need
+
+|`* * *` |user |find a person by name with the specified platforms |locate details of persons who have the social media platforms without having to go through the entire list
+
+|`* * *` |user |apply the filter of a social media platform |have a list of persons who are on the platform shown
+
+|`* * *` |user |apply multiple filters regarding social media platforms |have a list of persons who satisfy the filters shown
+
+|`* * *` |user |clear filters applied |get information regardless of them
+
+|`* * *` |social media user |select a person and see the social media platforms they are using |have the option not to go to the various platforms to check
+
+|`* * *` |social media user |store the links to the profiles of a person (friend) |have the app keep track of it for me
+
+|`* * *` |social media user |view the latest feed/status of a person |get up-to-date information about them
+
+|`* * *` |lazy social media user |log out from all my social media account with one command |remove potential unauthorised access effectively
+
+|`* * *` |social media user |log in to my account |access private profiles in my friend list
+
+|`* * *` |social media user |search for profile in all social media platforms with the same command |
+
+|`* * *` |social media user |send friend request from the app |
+
+|`* * *` |social media user |be able to react to a post (like, comment, etc) from the app directly |
+
+|`* * *` |lazy user |be able to remain logged in to my account |
+
+|`* * *` |social media user |post and update my statuses |let people know what I'm up to
+
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+
+|`* *` |advanced user |use shorter versions of a command |type a command faster
+
+|`* *` |user |have the information of my social media accounts encrypted |keep my personal information safe
+
+|`* *` |user |add a new person with private contact details |keep them in secret
+
+|`* *` |user |search a person with the tags |
+
+|`* *` |careless user |logout from all my account remotely |ensure my account security will not be compromised in case I lose my device
+
+|`* *` |social media user |be able to customize what is displayed (profile, social media in use, or latest feed/status) when I select a person |personalise the app to my liking
+
+|`* *` |careful user |have an additional authentication system for editing my profile setting |
+
+|`* *` |social media user |be able to download files (e.g. images or documents) posted by others |keep a copy and view them offline
+
+|`* *` |social media user |send messages to the people on my friends list |communicate with them
+
+|`* *` |social media user |add people found in my friends list on social media to my address book |create contacts of them and communicate through other means
+
+|`* *` |social media user |find my friends that are near my location |meet up and have fun with them
+
+|`* *` |user |set up planned events with a group of my friends |remember their details and be punctual for them
+
+|`* *` |user |be reminded of important events (e.g. movie outings, birthday celebrations) |be prompted not to miss them
 
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
 |=======================================================================
