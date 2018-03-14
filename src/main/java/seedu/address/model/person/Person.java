@@ -59,6 +59,15 @@ public class Person {
         return Collections.unmodifiableSet(tags.toSet());
     }
 
+    public String getTagsAsString() {
+        final StringBuilder builder = new StringBuilder();
+        for (String tag : tags.arrayOfTags()) {
+            builder.append(tag);
+            builder.append(" ");
+        }
+        return builder.toString();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
