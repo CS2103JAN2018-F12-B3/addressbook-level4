@@ -43,7 +43,13 @@
 <li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.15. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[Coming in v2.0]</code></a></li>
+<li><a href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.16. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#login-code-login-code-code-coming-in-v2-0-code">3.17. Login : <code>login</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.18. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.19. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.20. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.21. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.22. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -90,7 +96,7 @@ This app will not work with earlier versions of Java 8.
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/MockUi.png" alt="MockUi" width="790">
 </div>
 </div>
 </li>
@@ -389,7 +395,7 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Selects the person and loads the social media linked to the stored person at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -539,9 +545,211 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[Coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.16. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Encrypt the specified person from the address book so that password will be required to view the information of the specified personz.<br>
+Format: <code>encrypt INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Encrypts the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>encrypt 3</code><br>
+Encrypts the 3rd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>encrypt 1</code><br>
+Encrypts the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="login-code-login-code-code-coming-in-v2-0-code"><a class="link" href="#login-code-login-code-code-coming-in-v2-0-code">3.17. Login : <code>login</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Allow user to login to the social media specified.<br>
+Format: <code>loging SOCIALMEDIA</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>A login window will pop up upon entering the command.</p>
+</li>
+<li>
+<p>The user can tick the option of remain logged in.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>login facebook</code><br>
+Open the login window to facebook where the user can input his account and password.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="make-a-post-code-post-code-code-coming-in-v2-0-code"><a class="link" href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.18. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Publish a post on the specified social media.<br>
+Format: <code>post SOCIALMEDIA/MESSAGE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>User is required to login to their social media account.</p>
+</li>
+<li>
+<p>If not logged in, the application will prompt for the user to login.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>post facebook/Sample post.</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-profile-code-search-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.19. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Search for the specified profiles on all social media platform linkable with the application.<br>
+Format: <code>search KEYWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The KEYWORD can either be the user name or email.</p>
+</li>
+<li>
+<p>Make use of the search function of the respective social media platform.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>search John</code>
+Search with keyword "John" on all the social media linked with the application and display the search result in the browser window under the respective tabs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.20. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Search for the specified profiles on the social media platform specified.<br>
+Format: <code>search SOCIALMEDIA KEYWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The KEYWORD can either be the user name or email.</p>
+</li>
+<li>
+<p>Make use of the search function of the specified social media platform.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>searchon facebook John</code><br>
+Search with keyword "John" on facebook and display the search result in the browser window under the respective tabs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code"><a class="link" href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.21. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Logout from all the social media platform that the user has logged in.<br>
+Format: <code>logoutall</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code"><a class="link" href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.22. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Remove a link to profile of specified social media platform of a specified person.<br>
+Format: <code>removeplatform INDEX SOCIALMEDIA</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>After this command, when the person is selected, the tab for the removed platform will not be shown.</p>
+</li>
+<li>
+<p>If the platform specified was not stored in the first place, the application prompt the user.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>removeplatform 3 facebook</code><br>
+Search with keyword "John" on facebook and display the search result in the browser window under the respective tabs.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -605,7 +813,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 19:08:14 UTC
+Last updated 2018-03-23 03:19:36 UTC
 </div>
 </div>
 </body>
