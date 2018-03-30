@@ -35,21 +35,22 @@
 <li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
 <li><a href="#locating-persons-by-tag-code-findtag-code-code-coming-in-v2-0-code">3.6. Locating persons by tag: <code>findtag</code> <code>[Coming in v2.0]</code></a></li>
 <li><a href="#deleting-a-person-code-delete-code">3.7. Deleting a person : <code>delete</code></a></li>
-<li><a href="#sorting-all-persons-code-sort-code-code-since-v1-2-code">3.8. Sorting all persons : <code>sort</code> <code>[Since v1.2]</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.15. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.16. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#login-code-login-code-code-coming-in-v2-0-code">3.17. Login : <code>login</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.18. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.19. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.20. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.21. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.22. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#adding-social-media-platforms-to-a-person-code-addplatform-code-code-since-v1-3-code">3.8. Adding social media platforms to a person : <code>addplatform</code> <code>[Since v1.3]</code></a></li>
+<li><a href="#sorting-all-persons-code-sort-code-code-since-v1-2-code">3.9. Sorting all persons : <code>sort</code> <code>[Since v1.2]</code></a></li>
+<li><a href="#selecting-a-person-code-select-code">3.10. Selecting a person : <code>select</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.11. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.12. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.13. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.16. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.17. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#login-code-login-code-code-coming-in-v2-0-code">3.18. Login : <code>login</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.19. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.20. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.21. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.22. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.23. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -378,14 +379,59 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-all-persons-code-sort-code-code-since-v1-2-code"><a class="link" href="#sorting-all-persons-code-sort-code-code-since-v1-2-code">3.8. Sorting all persons : <code>sort</code> <code>[Since v1.2]</code></a></h3>
+<h3 id="adding-social-media-platforms-to-a-person-code-addplatform-code-code-since-v1-3-code"><a class="link" href="#adding-social-media-platforms-to-a-person-code-addplatform-code-code-since-v1-3-code">3.8. Adding social media platforms to a person : <code>addplatform</code> <code>[Since v1.3]</code></a></h3>
+<div class="paragraph">
+<p>Adds social media platforms to an existing person in the address book by providing the associated profile links.<br>
+Format: <code>addplatform INDEX [l/LINK]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds the social media platforms by editing the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>During this operation, the existing platform links of the person that are unchanged will be retained i.e adding of platforms is cumulative.</p>
+</li>
+<li>
+<p>You may only store a single link for each social media platform.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s social media platforms by typing <code>l/</code> without specifying any links after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addplatform 1 l/www.facebook.com/johndoe</code><br>
+Adds the Facebook platform with the link <code>www.facebook.com/johndoe</code> to the 1st person.</p>
+</li>
+<li>
+<p><code>addplatform 2 l/</code><br>
+Clears all existing social media platforms of the 2nd person.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-persons-code-sort-code-code-since-v1-2-code"><a class="link" href="#sorting-all-persons-code-sort-code-code-since-v1-2-code">3.9. Sorting all persons : <code>sort</code> <code>[Since v1.2]</code></a></h3>
 <div class="paragraph">
 <p>Sorts all persons in the address book alphabetically and then displays the current list in sorted order.<br>
 Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.9. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.10. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -426,7 +472,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.11. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -447,7 +493,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.12. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -492,7 +538,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.13. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -524,28 +570,28 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.16. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">3.17. Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encrypt the specified person from the address book so that password will be required to view the information of the specified personz.<br>
 Format: <code>encrypt INDEX</code></p>
@@ -586,7 +632,7 @@ Encrypts the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-code-login-code-code-coming-in-v2-0-code"><a class="link" href="#login-code-login-code-code-coming-in-v2-0-code">3.17. Login : <code>login</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="login-code-login-code-code-coming-in-v2-0-code"><a class="link" href="#login-code-login-code-code-coming-in-v2-0-code">3.18. Login : <code>login</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Allow user to login to the social media specified.<br>
 Format: <code>loging SOCIALMEDIA</code></p>
@@ -618,7 +664,7 @@ Open the login window to facebook where the user can input his account and passw
 </div>
 </div>
 <div class="sect2">
-<h3 id="make-a-post-code-post-code-code-coming-in-v2-0-code"><a class="link" href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.18. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="make-a-post-code-post-code-code-coming-in-v2-0-code"><a class="link" href="#make-a-post-code-post-code-code-coming-in-v2-0-code">3.19. Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Publish a post on the specified social media.<br>
 Format: <code>post SOCIALMEDIA/MESSAGE</code></p>
@@ -649,7 +695,7 @@ Format: <code>post SOCIALMEDIA/MESSAGE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="search-for-profile-code-search-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.19. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="search-for-profile-code-search-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-code-search-code-code-coming-in-v2-0-code">3.20. Search for profile : <code>search</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Search for the specified profiles on all social media platform linkable with the application.<br>
 Format: <code>search KEYWORD</code></p>
@@ -681,7 +727,7 @@ Search with keyword "John" on all the social media linked with the application a
 </div>
 </div>
 <div class="sect2">
-<h3 id="search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.20. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code"><a class="link" href="#search-for-profile-on-specific-platform-code-searchon-code-code-coming-in-v2-0-code">3.21. Search for profile on specific platform : <code>searchon</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Search for the specified profiles on the social media platform specified.<br>
 Format: <code>search SOCIALMEDIA KEYWORD</code></p>
@@ -713,14 +759,14 @@ Search with keyword "John" on facebook and display the search result in the brow
 </div>
 </div>
 <div class="sect2">
-<h3 id="logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code"><a class="link" href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.21. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code"><a class="link" href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">3.22. Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Logout from all the social media platform that the user has logged in.<br>
 Format: <code>logoutall</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code"><a class="link" href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.22. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code"><a class="link" href="#remove-link-to-stored-platform-code-removeplatform-code-code-coming-in-v2-0-code">3.23. Remove link to stored platform : <code>removeplatform</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Remove a link to profile of specified social media platform of a specified person.<br>
 Format: <code>removeplatform INDEX SOCIALMEDIA</code></p>
@@ -791,6 +837,9 @@ e.g. <code>find James Jake</code></p>
 <p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
+<p><strong>Sort</strong> : <code>sort</code></p>
+</li>
+<li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
@@ -813,7 +862,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 03:54:08 UTC
+Last updated 2018-03-30 03:54:55 UTC
 </div>
 </div>
 </body>
