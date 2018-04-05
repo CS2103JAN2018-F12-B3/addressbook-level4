@@ -280,6 +280,45 @@ Clears all existing social media platforms of the 2nd person.</p>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="removing-stored-platforms-of-a-person-code-removeplatform-code-code-since-v1-4-code"><a class="link" href="#removing-stored-platforms-of-a-person-code-removeplatform-code-code-since-v1-4-code">Removing stored platforms of a person : <code>removeplatform</code> <code>[Since v1.4]</code></a></h3>
+<div class="paragraph">
+<p>Removes the specified social media platforms of the stated person.<br>
+Format: <code>removeplatform INDEX [smp/PLATFORM]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the social media platforms by editing the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>You can remove all the social media platforms of a person by not specifying any platform fields.</p>
+</li>
+<li>
+<p>Unrecognised platforms will be ignored during execution.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeplatform 1</code><br>
+Removes all social media platforms tied to the 1st person.</p>
+</li>
+<li>
+<p><code>removeplatform 2 smp/twitter</code><br>
+Removes the Twitter platform from the 2nd person.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -691,6 +730,163 @@ This feature organises and arranges the list for easier viewing and searching.</
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
+<div class="sect2">
+<h3 id="sort-feature"><a class="link" href="#sort-feature">Sort feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The sort mechanism is facilitated by the <code>SortCommand</code> and is used for sorting all persons found in the address book by name alphabetically.
+It inherits from <code>UndoableCommand</code> and thus supports the undo/redo mechanism, enabling the ability to reverse the command and return the address book to its previous unsorted state.</p>
+</div>
+<div class="paragraph">
+<p>When the user executes the <code>SortCommand</code> using the command word <code>sort</code>, the current list of persons shown in the GUI will be retained.
+As illustrated, a filtered list of persons will be displayed in a sorted manner once the command is executed:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortFilteredListDiagram.png" alt="SortFilteredListDiagram" width="850">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The command can also handle multiple persons with similar names (i.e. different letter-casings) as shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortSimilarNamesDiagram.png" alt="SortSimilarNamesDiagram" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>During sorting, names of two different persons are compared using the static method, <code>nameComparator</code>, found in the person class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">Comparator</span>&lt;Person&gt; nameComparator() {
+    <span class="keyword">return</span> <span class="predefined-type">Comparator</span>.comparing((Person p) -&gt; p.getName().toString(), (
+        s1, s2) -&gt; (s1.compareToIgnoreCase(s2) == <span class="integer">0</span>) ? s1.compareTo(s2) : s1.compareToIgnoreCase(s2));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As seen, casing is ignored when names are first compared with each other. The usual lexicographical order will instead be used when encountering identical names.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the sort operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortCommandSequenceDiagram.png" alt="SortCommandSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect: Implementation of <code>SortCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a custom sorting method for person names</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows list to be displayed in a uniform manner, such that similar names are also sorted.</p>
+</li>
+<li>
+<p>Cons: Requires extra work to write custom method.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Utilise <code>String.CASE_INSENSITIVE_ORDER</code> for sorting</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require additional work to write or override compare methods.</p>
+</li>
+<li>
+<p>Cons: List may be inconsistent when sorting multiple persons with similar names.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-custom-sorting-method"><a class="link" href="#aspect-implementation-of-custom-sorting-method">Aspect: Implementation of Custom Sorting Method</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use comparators and create one for person names called <code>nameComparator</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Potentially enabling the ability to sort different fields other than names.</p>
+</li>
+<li>
+<p>Cons: May be more difficult to write.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement comparable and override the <code>compareTo</code> method in person class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simpler to understand.</p>
+</li>
+<li>
+<p>Cons: Can only define a single sorting sequence when comparing two different persons.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-display-of-person-list-in-gui"><a class="link" href="#aspect-display-of-person-list-in-gui">Aspect: Display of person list in GUI</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Retain the current list of persons as shown in GUI but shown in a sorted manner</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User would not have to key in the command to filter the list after sorting.</p>
+</li>
+<li>
+<p>Cons: User may think that only the current list is sorted.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Displays the list of all persons found in the address book sorted alphabetically</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More properly describes what <code>sort</code> actually does by showing the full list of persons sorted.</p>
+</li>
+<li>
+<p>Cons: Current list is replaced by showing all persons.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -705,7 +901,7 @@ This feature organises and arranges the list for easier viewing and searching.</
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 14:54:13 UTC
+Last updated 2018-04-05 08:43:25 UTC
 </div>
 </div>
 </body>
