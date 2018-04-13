@@ -343,9 +343,6 @@ public abstract class AddressBookSystemTest {
             return new URL("https://" + url);
         }
 
-        return new URL(BrowserPanel.DUMMY_PROFILE_PAGE_URL + personName.replaceAll(" ", "%20"));
-    }*/
-    /*
         return MainApp.class.getResource(FXML_FILE_FOLDER + "default.html");
     }
     */
