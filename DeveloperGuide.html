@@ -47,9 +47,10 @@
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#findtag-feature">3.2. Findtag feature</a></li>
 <li><a href="#sort-feature">3.3. Sort feature</a></li>
-<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#findtag-feature-2">3.4. Findtag feature</a></li>
+<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -878,11 +879,11 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>The 'findtag' feature is implemented with the same mechanism as the 'find' feature. It is used for finding stored persons with their tags instead of names. The key components of the feature are 'FindWithTagCommand', 'FindWithTagCommandParser', and 'TagContainsKeywordsPredicate'.</p>
 </div>
 <div class="paragraph">
-<p>The main component of 'findtag' is the 'FindWithTagCommand' which resides inside the logic component. It inherit from 'Command', as such, similar to 'find', 'findtag' is not an undoable command. The following diagram shows the inheritance diagram for 'FindWithTagCommand':</p>
+<p>The main component of 'findtag' is the 'FindWithTagCommand' which resides inside the logic component. It inherit from 'Command', as such, similar to 'find', 'findtag' is not an undoable command. From the class diagram of Logic class, we can see inheritance  of 'FindWithTagCommand' in comparison with other types of commands:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
+<img src="images/FindTagInLogicClassDiagram.png" alt="FindTagInLogicClassDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -890,7 +891,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/FindTagResultDiagram.png" alt="FindTagResultDiagram" width="800">
+<img src="images/FindtagExecution.png" alt="FindtagExecution" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -898,21 +899,26 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/InvalidCommandKeywordDiagram.png" alt="InvalidCommandKeywordDiagram" width="800">
+<img src="images/DifferentCaseSize.png" alt="DifferentCaseSize" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the list of persons displayed will not change for in this case.</p>
+<p>Since the application does not recognize the command, the list of person displayed will not be changed.</p>
 </div>
 <div class="paragraph">
 <p>The 'findtag' command can handle multiple input tag keywords and, similar to 'find', 'findtag' is an ‘or’ search. For example, 'findtag friends owesMoney' will find any person with the tag ‘friends’ or ‘owesMoney’ or both.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindMultipleTags.png" alt="FindMultipleTags" width="800">
+</div>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the findtag operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
+<img src="images/FindTagSequenceDiagram.png" alt="FindTagSequenceDiagram" width="900">
 </div>
 </div>
 </div>
@@ -930,7 +936,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Pros: 'findtag' works in the same mechanism as 'find', thus will not deviate from the overall architecture of the address book (i.e. Event Driven design).</p>
 </li>
 <li>
-<p>Cons: May generate classes/ methods that are implemented with very similar style (i.e. a general pattern can be abstract out). Thus, additional work may be needed to handle the abstraction.</p>
+<p>Cons: May generate classes/ methods that are implemented with very similar style, or in the worse case, we may have duplicate codes. Thus, additional attention needds to be given to ensure that the implementation of 'findtag' will not result in duplicate codes.</p>
 </li>
 </ul>
 </div>
@@ -1111,20 +1117,125 @@ As illustrated, a filtered list of persons will be displayed in a sorted manner 
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
+<h3 id="findtag-feature-2"><a class="link" href="#findtag-feature-2">3.4. Findtag feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the search feature follows very closely to the Event-Driven architecture. It is used for searching profiles on the social media platforms available in the application. The key components of the feature is the 'SearchPersonEvent' and its handler method.</p>
+</div>
+<div class="paragraph">
+<p>The 'SearchCommand' class is located within the logic component. It is not an undoable command, hence it inherit from 'Command'.</p>
+</div>
+<div class="paragraph">
+<p>The search feature is able to perform search on either the input platform or all the available platforms. To execute the search feature, simply input the command keyword "search" followed by an optional declaration of platform to perform the search on, and lastly followed by the profile name to be searched for.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SearchFunction.png" alt="SearchFunction" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Similar to most of the other feature in the application, the command keyword is case sensitive while the search name is not. As for platform declaration, only predefined inputs are allowed. These predefined inputs are the names of the platform as well as the aliases. (e.g. facebook, fb, twitter&#8230;&#8203;) An invalid command format prompt will be shown if the input platform is not one of the predefined inputs, or has a different case size.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InvalidPlatformCases.png" alt="InvalidPlatformCases" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon execution of the search feature with the keyword "search", the validation of input arguments are first checked by the parser, then a SearchPersonEvent will be posted to the event bus. This event is handled by the handleSearchPersonEvent method, which determine the platform to perform the search on and choose the tabs to display.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SearchPersonEvent.png" alt="SearchPersonEvent" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-searchcommand-code-code-searchpersonevent-code-and-the-handler-method"><a class="link" href="#aspect-implementation-of-code-searchcommand-code-code-searchpersonevent-code-and-the-handler-method">Aspect: Implementation of <code>SearchCommand</code> <code>SearchPersonEvent</code> and the handler method</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Implement multiple Command class, Event class, and handler method to facilitate searching on different social media platforms.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement since each class only need to handle search on one platform.</p>
+</li>
+<li>
+<p>Cons: High chance of generating similar/duplicated codes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> Have a common 'SearchCommand' class for search.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduce repeated/similar code.</p>
+</li>
+<li>
+<p>Cons: Harder to implement since the feature now has to determine the platform to search on base on the input form the user.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-link-to-the-search-functions-of-different-social-media-platforms"><a class="link" href="#aspect-link-to-the-search-functions-of-different-social-media-platforms">Aspect: Link to the search functions of different social media platforms</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use the search URL of different platform to perfom the search.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Much easier to implement since we are simply loading the search URL into our browser.</p>
+</li>
+<li>
+<p>Cons: Direct use of search URL uses a lot of resources.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a third party code to perform the search.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: May consume less resources.</p>
+</li>
+<li>
+<p>Cons: May have to program the UI to display the search result.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1155,7 +1266,7 @@ As illustrated, a filtered list of persons will be displayed in a sorted manner 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2854,7 +2965,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 00:55:43 UTC
+Last updated 2018-04-13 03:57:12 UTC
 </div>
 </div>
 </body>

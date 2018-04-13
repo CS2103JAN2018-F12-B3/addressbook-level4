@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Media Socializer is a desktop address book application used to help social media users to keep track of all the social media platforms they are using. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Media Socializer is a one-stop social media desktop application made to help users to keep track of the many social media platforms they are currently using. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -35,20 +35,20 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to search on all platforms</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to search for person on social media platforms</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows user to perform the search action on all the social media platforms available with a single command</p>
+<p>What it does: allows the user to perform the search function for person&#8217;s profile on the social media platforms through the application with a single command.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can do search on the application instead of going to the individual social media platform and repeatedly perform the search.</p>
+<p>Justification: This feature grants the user the ability to search for other person&#8217;s profile on either the stated social media platforms or all the platforms available through the application. Thus, the user no longer need to go on to the different social media platform and perform the search repeatedly. This feature brings the application one step closer to the goal of being an one-stop social media application.</p>
 </li>
 <li>
-<p>Highlights: This enhancement requires interactions with all the social media platform available, each with different interfaces. Thus the implementation involve a lot of third party libraries, and this makes the implementation challenging.</p>
+<p>Highlights: This feature has to be able to display the search results of different social media platforms in a convenient way, as such, it requires the implementor to come up with a UI allows the user to jump between search results easily. The implementation is</p>
 </li>
 <li>
-<p>Credits: <em>{Update the social media library used here}</em></p>
+<p>Credits: The design of the UI is inspired by the tab interface of the internet browsers (i.e. Firefox, Google Chrome, and etc)</p>
 </li>
 </ul>
 </div>
@@ -68,7 +68,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.0</code> - <code>v1.5rc</code> (6 releases) on GitHub</p>
+<p>Ensure the closure of milestone <code>v1.3</code> - <code>v1.5rc</code> (3 milestones) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -78,7 +78,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Added aliases to all existing commands (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Modified the WebBrowser UI to suit the requirement of Media Socializer (Pull request <a href="https://github.com/CS2103JAN2018-F12-B3/main/pull/90">#90</a>)</p>
+</li>
+<li>
+<p>Edited the typical persons to support testing of findtag feature (Commit <a href="https://github.com/CS2103JAN2018-F12-B3/main/pull/57/commits/81e4756a3c4b96af8ef241bb2f09b13da5cdc370">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B3/main/pull/57/commits/a96b25048d02a8c135a9e59cd3001efa591f64fc">2</a>, <a href="https://github.com/CS2103JAN2018-F12-B3/main/pull/57/commits/8c9c32c0f41d9f15e1f8c440491c3eafd35383a0">3</a>)</p>
 </li>
 </ul>
 </div>
@@ -88,7 +91,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Update About Us: <a href="https://github.com/CS2103JAN2018-F12-B3/main/pull/56">#56</a></p>
 </li>
 </ul>
 </div>
@@ -98,26 +101,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Follow up with reported bugs (example: <a href="https://github.com/CS2103JAN2018-F12-B3/main/issues/112">1</a>, <a href="https://github.com/CS2103JAN2018-F12-B3/main/issues/109">2</a>)</p>
 </li>
 </ul>
 </div>
@@ -126,9 +110,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -145,6 +126,381 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="locating-persons-by-tag-code-findtag-code-code-since-v1-2-code"><a class="link" href="#locating-persons-by-tag-code-findtag-code-code-since-v1-2-code">Locating persons by tag: <code>findtag</code> <code>[Since v1.2]</code></a></h3>
+<div class="paragraph">
+<p>Finds persons whose tags contain any of the given keywords.<br>
+Format: <code>findtag KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>Friends</code> will match <code>friends</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>friends classmate</code> will match <code>classmate friends</code></p>
+</li>
+<li>
+<p>Only the tags are searched.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>friend</code> will not match <code>friends</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>friends classmates</code> will return persons with tags <code>friends</code> and <code>neighbour</code>, <code>owesMoney</code> <code>friends</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findtag friends</code><br>
+Returns any person having tags <code>friends</code></p>
+</li>
+<li>
+<p><code>find friends classmate neighbour</code><br>
+Returns any person having tags <code>friends</code>, <code>classmate</code>, or <code>neighbour</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">Deleting a person : <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified person from the address book.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>delete 1</code><br>
+Deletes the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-social-media-platforms-to-a-person-code-addplatform-code-code-since-v1-3-code"><a class="link" href="#adding-social-media-platforms-to-a-person-code-addplatform-code-code-since-v1-3-code">Adding social media platforms to a person : <code>addplatform</code> <code>[Since v1.3]</code></a></h3>
+<div class="paragraph">
+<p>Adds social media platforms to an existing person in the address book by providing the associated profile links.<br>
+Format: <code>addplatform INDEX [l/LINK]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds the social media platforms by editing the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>During this operation, the existing platform links of the person that are unchanged will be retained i.e adding of platforms is cumulative.</p>
+</li>
+<li>
+<p>You may only store a single link for each social media platform.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s social media platforms by typing <code>l/</code> without specifying any links after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Valid Facebook Link Forms</th>
+<th class="tableblock halign-left valign-top">Valid Twitter Link Forms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>https://www.facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>https://facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>http://www.facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>http://facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>www.facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>facebook.com/&lt;profile username&gt;</code></p>
+</li>
+<li>
+<p><code>facebook.com/profile.php?id=&lt;user profile id&gt;</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p><code>https://www.twitter.com/&lt;username handle&gt;</code></p>
+</li>
+<li>
+<p><code>https://twitter.com/&lt;username handle&gt;</code></p>
+</li>
+<li>
+<p><code>http://www.twitter.com/&lt;username handle&gt;</code></p>
+</li>
+<li>
+<p><code>http://twitter.com/&lt;username handle&gt;</code></p>
+</li>
+<li>
+<p><code>www.twitter.com/&lt;username handle&gt;</code></p>
+</li>
+<li>
+<p><code>twitter.com/&lt;username handle&gt;</code></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addplatform 1 l/www.facebook.com/johndoe</code><br>
+Adds the Facebook platform with the link <code>www.facebook.com/johndoe</code> to the 1st person.</p>
+</li>
+<li>
+<p><code>addplatform 2 l/</code><br>
+Clears all existing social media platforms of the 2nd person.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-stored-platforms-of-a-person-code-removeplatform-code-code-since-v1-4-code"><a class="link" href="#removing-stored-platforms-of-a-person-code-removeplatform-code-code-since-v1-4-code">Removing stored platforms of a person : <code>removeplatform</code> <code>[Since v1.4]</code></a></h3>
+<div class="paragraph">
+<p>Removes the specified social media platforms of the stated person.<br>
+Format: <code>removeplatform INDEX [smp/PLATFORM]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the social media platforms by editing the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>You can remove all the social media platforms of a person by not specifying any platform fields.</p>
+</li>
+<li>
+<p>Unrecognised platforms will be ignored during execution.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeplatform 1</code><br>
+Removes all social media platforms tied to the 1st person.</p>
+</li>
+<li>
+<p><code>removeplatform 2 smp/twitter</code><br>
+Removes the Twitter platform from the 2nd person.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-persons-code-sort-code-code-since-v1-2-code"><a class="link" href="#sorting-all-persons-code-sort-code-code-since-v1-2-code">Sorting all persons : <code>sort</code> <code>[Since v1.2]</code></a></h3>
+<div class="paragraph">
+<p>Sorts all persons in the address book alphabetically and then displays the current list in sorted order.<br>
+Format: <code>sort</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-profile-code-search-code-code-since-v1-5-code"><a class="link" href="#search-for-profile-code-search-code-code-since-v1-5-code">Search for profile : <code>search</code> <code>[Since v1.5]</code></a></h3>
+<div class="paragraph">
+<p>Search for the specified profiles on available social media platform within the application.<br>
+Format: <code>search [PLATFORM,] KEYWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The PLATFORM is an optional input. It indicates the social media platform to perform the search on.</p>
+</li>
+<li>
+<p>If no PLATFORM is entered, the search will be performed on all platforms available.</p>
+</li>
+<li>
+<p>To indicate the platform, the user can enter the name of the platform (e.g. facebook) or use the inbuilt alias (e.g. fb)</p>
+</li>
+<li>
+<p>Currently available platform and the respective alias:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1) facebook (alias: fb)</p>
+</li>
+<li>
+<p>2) twitter (alias: tw).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The KEYWORD is the name to be searched for.</p>
+</li>
+<li>
+<p>Make use of the search function of the respective social media platform.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>search john</code>
+Search with keyword "john" on all the social media linked with the application and display the search result in the browser window under the respective tabs.</p>
+</li>
+<li>
+<p><code>search fb, tom</code><br>
+Search with keyword "tom" on Facebook and display the search result in the browser window under the Facebook tab.</p>
+</li>
+<li>
+<p><code>search twitter, tom</code><br>
+Search with keyword "tom" on Twitter and display the search result in the browser window under the Twitter tab.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">Selecting a person : <code>select</code></a></h3>
+<div class="paragraph">
+<p>Selects the person identified by the index number used in the last person listing.<br>
+Format: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person and loads the social media linked to the stored person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">Listing entered commands : <code>history</code></a></h3>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
@@ -223,6 +579,27 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing all entries : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
+<div class="paragraph">
+<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code">Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encrypt the specified person from the address book so that password will be required to view the information of the specified person.<br>
@@ -263,6 +640,545 @@ Encrypts the 1st person in the results of the <code>find</code> command.</p>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="make-a-post-code-post-code-code-coming-in-v2-0-code"><a class="link" href="#make-a-post-code-post-code-code-coming-in-v2-0-code">Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Publish a post on the specified social media.<br>
+Format: <code>post SOCIALMEDIA/MESSAGE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>User is required to login to their social media account.</p>
+</li>
+<li>
+<p>If not logged in, the application will prompt for the user to login.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>post facebook/Sample post.</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code"><a class="link" href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code">Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Logout from all the social media platform that the user has logged in.<br>
+Format: <code>logoutall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>After this command, when the person is selected, the tab for the removed platform will not be shown.</p>
+</li>
+<li>
+<p>If the platform specified was not stored in the first place, the application prompt the user.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>removeplatform 3 facebook</code><br>
+Search with keyword "John" on facebook and display the search result in the browser window under the respective tabs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Login</strong> : <code>login facebook</code></p>
+</li>
+<li>
+<p><strong>Add</strong> : <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong>Find with Tag</strong> : <code>findtag KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>findtag friends neighbour</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>Sort</strong> : <code>sort</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong>Add Platform</strong> : <code>addplatform INDEX [l/LINK]&#8230;&#8203;</code><br>
+e.g. <code>addplatform 1 l/www.facebook.com/james.ho</code></p>
+</li>
+<li>
+<p><strong>Remove Platform</strong> : <code>removeplatform INDEX [smp/PLATFORM]&#8230;&#8203;</code><br>
+e.g. <code>removeplatform 1 smp/facebook</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="search-for-profile-code-search-code-code-since-v1-5-code-2"><a class="link" href="#search-for-profile-code-search-code-code-since-v1-5-code-2">Search for profile : <code>search</code> <code>[Since v1.5]</code></a></h3>
+<div class="paragraph">
+<p>Search for the specified profiles on available social media platform within the application.<br>
+Format: <code>search [PLATFORM,] KEYWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The PLATFORM is an optional input. It indicates the social media platform to perform the search on.</p>
+</li>
+<li>
+<p>If no PLATFORM is entered, the search will be performed on all platforms available.</p>
+</li>
+<li>
+<p>To indicate the platform, the user can enter the name of the platform (e.g. facebook) or use the inbuilt alias (e.g. fb)</p>
+</li>
+<li>
+<p>Currently available platform and the respective alias:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1) facebook (alias: fb)</p>
+</li>
+<li>
+<p>2) twitter (alias: tw).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The KEYWORD is the name to be searched for.</p>
+</li>
+<li>
+<p>Make use of the search function of the respective social media platform.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>search john</code>
+Search with keyword "john" on all the social media linked with the application and display the search result in the browser window under the respective tabs.</p>
+</li>
+<li>
+<p><code>search fb, tom</code><br>
+Search with keyword "tom" on Facebook and display the search result in the browser window under the Facebook tab.</p>
+</li>
+<li>
+<p><code>search twitter, tom</code><br>
+Search with keyword "tom" on Twitter and display the search result in the browser window under the Twitter tab.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-person-code-select-code-2"><a class="link" href="#selecting-a-person-code-select-code-2">Selecting a person : <code>select</code></a></h3>
+<div class="paragraph">
+<p>Selects the person identified by the index number used in the last person listing.<br>
+Format: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person and loads the social media linked to the stored person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code-2"><a class="link" href="#listing-entered-commands-code-history-code-2">Listing entered commands : <code>history</code></a></h3>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-previous-command-code-undo-code-2"><a class="link" href="#undoing-previous-command-code-undo-code-2">Undoing previous command : <code>undo</code></a></h3>
+<div class="paragraph">
+<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>addplatform</code>, <code>removeplatform</code>, <code>add</code>, <code>delete</code>, <code>edit</code>, <code>sort</code> and <code>clear</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>list</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>select 1</code><br>
+<code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redoing-the-previously-undone-command-code-redo-code-2"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-2">Redoing the previously undone command : <code>redo</code></a></h3>
+<div class="paragraph">
+<p>Reverses the most recent <code>undo</code> command.<br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code-2"><a class="link" href="#clearing-all-entries-code-clear-code-2">Clearing all entries : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code-2"><a class="link" href="#exiting-the-program-code-exit-code-2">Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data-2"><a class="link" href="#saving-the-data-2">Saving the data</a></h3>
+<div class="paragraph">
+<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code-2"><a class="link" href="#encrypting-data-files-code-encrypt-code-code-coming-in-v2-0-code-2">Encrypting data files : <code>encrypt</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Encrypt the specified person from the address book so that password will be required to view the information of the specified person.<br>
+Format: <code>encrypt INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Encrypts the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>encrypt 3</code><br>
+Encrypts the 3rd person in the address book.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>encrypt 1</code><br>
+Encrypts the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="make-a-post-code-post-code-code-coming-in-v2-0-code-2"><a class="link" href="#make-a-post-code-post-code-code-coming-in-v2-0-code-2">Make a post : <code>post</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Publish a post on the specified social media.<br>
+Format: <code>post SOCIALMEDIA/MESSAGE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>User is required to login to their social media account.</p>
+</li>
+<li>
+<p>If not logged in, the application will prompt for the user to login.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>post facebook/Sample post.</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code-2"><a class="link" href="#logout-from-all-the-linked-platform-code-logoutall-code-code-coming-in-v2-0-code-2">Logout from all the linked platform : <code>logoutall</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Logout from all the social media platform that the user has logged in.<br>
+Format: <code>logoutall</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>After this command, when the person is selected, the tab for the removed platform will not be shown.</p>
+</li>
+<li>
+<p>If the platform specified was not stored in the first place, the application prompt the user.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>removeplatform 3 facebook</code><br>
+Search with keyword "John" on facebook and display the search result in the browser window under the respective tabs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq-2"><a class="link" href="#faq-2">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary-2"><a class="link" href="#command-summary-2">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Login</strong> : <code>login facebook</code></p>
+</li>
+<li>
+<p><strong>Add</strong> : <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong>Find with Tag</strong> : <code>findtag KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>findtag friends neighbour</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>Sort</strong> : <code>sort</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong>Add Platform</strong> : <code>addplatform INDEX [l/LINK]&#8230;&#8203;</code><br>
+e.g. <code>addplatform 1 l/www.facebook.com/james.ho</code></p>
+</li>
+<li>
+<p><strong>Remove Platform</strong> : <code>removeplatform INDEX [smp/PLATFORM]&#8230;&#8203;</code><br>
+e.g. <code>removeplatform 1 smp/facebook</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -280,58 +1196,10 @@ Encrypts the 1st person in the results of the <code>find</code> command.</p>
 </table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix A: Non Functional Requirements</a></h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
-</li>
-<li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
-</li>
-<li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
-</li>
-<li>
-<p>Should display the social media used by the selected person fast.</p>
-</li>
-<li>
-<p>The login information of the user should be stored in a secure manner.</p>
-</li>
-<li>
-<p>Login to the user&#8217;s account through the application should be equally fast as to directly login to the social media platform.</p>
-</li>
-<li>
-<p>The application should have an user friendly interface so that even users that are not familiar with CLI will have minimal problem navigating through the application.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 00:55:43 UTC
+Last updated 2018-04-13 03:57:12 UTC
 </div>
 </div>
 </body>
