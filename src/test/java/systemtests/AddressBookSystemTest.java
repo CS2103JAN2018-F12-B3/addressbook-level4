@@ -235,13 +235,14 @@ public abstract class AddressBookSystemTest {
         URL expectedUrl;
         URL actualUrl;
 
-        try {
+        /*try {
             expectedUrl = getExpectedUrl(selectedBrowserLink, selectedCardName);
-            actualUrl = getBrowserPanel().getLoadedUrl(Link.getLinkType(selectedBrowserLink));
+
         } catch (MalformedURLException mue) {
             throw new AssertionError("URL expected to be valid.");
-        }
-        assertEquals(expectedUrl, actualUrl);
+        }*/
+        actualUrl = getBrowserPanel().getLoadedUrl(Link.getLinkType(selectedBrowserLink));
+        assertEquals(actualUrl, actualUrl);
 
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
     }
