@@ -221,12 +221,14 @@ public abstract class AddressBookSystemTest {
      */
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
         String selectedBrowserLink = "";
+        String linkType = "";
         Map<String, SocialMediaPlatform> selectedPersonSmpMap = getModel().getFilteredPersonList().get(
                 expectedSelectedCardIndex.getZeroBased()).getSocialMediaPlatformMap();
         List<String> keyList = Arrays.asList(Link.FACEBOOK_LINK_TYPE, Link.TWITTER_LINK_TYPE);
         for (String key : keyList) {
             SocialMediaPlatform obj = selectedPersonSmpMap.get(key);
             if (obj != null) {
+                linkType = key;
                 selectedBrowserLink = obj.getLink().value;
             }
         }
@@ -236,10 +238,10 @@ public abstract class AddressBookSystemTest {
         URL actualUrl;
 
         try {
-            if (Link.getLinkType(selectedBrowserLink).equals(Link.FACEBOOK_LINK_TYPE)) {
+            if (linkType.equals(Link.FACEBOOK_LINK_TYPE)) {
                 expectedUrl = new URL("https://m." + selectedBrowserLink.substring(
                         selectedBrowserLink.indexOf(Link.FACEBOOK_LINK_TYPE)));
-            } else if (Link.getLinkType(selectedBrowserLink).equals(Link.TWITTER_LINK_TYPE)) {
+            } else if (linkType.equals(Link.TWITTER_LINK_TYPE)) {
                 expectedUrl = new URL("https://" + selectedBrowserLink);
             } else {
                 expectedUrl = new URL(BrowserPanel.DUMMY_PROFILE_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
