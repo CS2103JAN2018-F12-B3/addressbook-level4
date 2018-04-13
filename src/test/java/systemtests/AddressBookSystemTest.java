@@ -235,14 +235,20 @@ public abstract class AddressBookSystemTest {
         URL expectedUrl;
         URL actualUrl;
 
-        /*try {
-            expectedUrl = getExpectedUrl(selectedBrowserLink, selectedCardName);
-
+        try {
+            if (Link.getLinkType(selectedBrowserLink).equals(Link.FACEBOOK_LINK_TYPE)) {
+                expectedUrl = new URL("https://m." + selectedBrowserLink.substring(
+                        selectedBrowserLink.indexOf(Link.FACEBOOK_LINK_TYPE)));
+            } else if (Link.getLinkType(selectedBrowserLink).equals(Link.TWITTER_LINK_TYPE)) {
+                expectedUrl = new URL("https://" + selectedBrowserLink);
+            } else {
+                expectedUrl = new URL(BrowserPanel.DUMMY_PROFILE_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
+            }
+            actualUrl = getBrowserPanel().getLoadedUrl(Link.getLinkType(selectedBrowserLink));
         } catch (MalformedURLException mue) {
             throw new AssertionError("URL expected to be valid.");
-        }*/
-        actualUrl = getBrowserPanel().getLoadedUrl(Link.getLinkType(selectedBrowserLink));
-        assertEquals(actualUrl, actualUrl);
+        }
+        assertEquals(expectedUrl, actualUrl);
 
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
     }
@@ -324,10 +330,10 @@ public abstract class AddressBookSystemTest {
     }
 
     //@@author Nethergale
-    /**
+    /*
      * Returns the expected URL in the correct format when provided with a String type {@code url}.
      * {@code personName} is utilised when no URLs of the available platforms can be constructed.
-     */
+
     protected URL getExpectedUrl(String url, String personName) throws MalformedURLException {
         if (Link.getLinkType(url).equals(Link.FACEBOOK_LINK_TYPE)) {
             return new URL("https://m." + url.substring(url.indexOf(Link.FACEBOOK_LINK_TYPE)));
@@ -336,7 +342,7 @@ public abstract class AddressBookSystemTest {
         }
 
         return new URL(BrowserPanel.DUMMY_PROFILE_PAGE_URL + personName.replaceAll(" ", "%20"));
-    }
+    }*/
 
     //@@author
     /**
