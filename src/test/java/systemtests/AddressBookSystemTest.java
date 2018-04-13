@@ -233,6 +233,7 @@ public abstract class AddressBookSystemTest {
             }
         }
 
+        int startIndex = selectedBrowserLink.indexOf(Link.FACEBOOK_LINK_TYPE);
         String selectedCardName = getPersonListPanel().getHandleToSelectedCard().getName();
         URL expectedUrl;
         URL actualUrl;
@@ -240,7 +241,7 @@ public abstract class AddressBookSystemTest {
         try {
             if (linkType.equals(Link.FACEBOOK_LINK_TYPE)) {
                 expectedUrl = new URL("https://m." + selectedBrowserLink.substring(
-                        selectedBrowserLink.indexOf(Link.FACEBOOK_LINK_TYPE)));
+                        startIndex));
             } else if (linkType.equals(Link.TWITTER_LINK_TYPE)) {
                 expectedUrl = new URL("https://" + selectedBrowserLink);
             } else {
@@ -344,6 +345,7 @@ public abstract class AddressBookSystemTest {
         }
 
         return new URL(BrowserPanel.DUMMY_PROFILE_PAGE_URL + personName.replaceAll(" ", "%20"));
+        return MainApp.class.getResource(FXML_FILE_FOLDER + "default.html");
     }*/
 
     //@@author
