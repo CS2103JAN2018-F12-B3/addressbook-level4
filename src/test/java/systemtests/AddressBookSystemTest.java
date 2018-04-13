@@ -226,7 +226,7 @@ public abstract class AddressBookSystemTest {
         List<String> keyList = Arrays.asList(Link.FACEBOOK_LINK_TYPE, Link.TWITTER_LINK_TYPE);
         for (String key : keyList) {
             SocialMediaPlatform obj = selectedPersonSmpMap.get(key);
-            if(obj != null) {
+            if (obj != null) {
                 selectedBrowserLink = obj.getLink().value;
             }
         }
