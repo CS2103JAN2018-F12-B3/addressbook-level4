@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Media Socializer is a desktop address book application used to help social media users to keep track of all the social media platforms their contacts are using. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Media Socializer is a one-stop social media desktop application used to help social media users keep track of all the social media platforms their contacts are using. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -65,7 +65,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.0</code> - <code>v1.5rc</code> (6 releases) on GitHub</p>
+<p>Managed releases <code>v1.5rc</code> - <code>v1.5</code> (2 releases) on GitHub</p>
 </li>
 <li>
 <p>Identified the deliverables for each release to keep track of</p>
@@ -241,6 +241,20 @@ Format: <code>addplatform INDEX [l/LINK]&#8230;&#8203;</code></p>
 </tr>
 </tbody>
 </table>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is not guaranteed that the link provided leads to an available page. Links are accepted so long as they
+match any of the patterns as defined above. This feature will be improved to test for broken/removed pages
+in future releases.
 </td>
 </tr>
 </table>
@@ -868,12 +882,176 @@ As illustrated, a filtered list of persons will be displayed in a sorted manner 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="add-platform-feature"><a class="link" href="#add-platform-feature">Add Platform feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The add platform function makes use of a factory to facilitate the creation of various social media platforms.
+A platform is created only when users provide a valid profile link; this object will be associated to the particular
+person found in the list as specified by the user. Currently, only the <code>Facebook</code> and <code>Twitter</code> platforms are available.</p>
+</div>
+<div class="paragraph">
+<p>The structure of the class diagram is as shown:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SocialMediaPlatformFactoryClassDiagram.png" alt="SocialMediaPlatformFactoryClassDiagram" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen, a client can make use of the <code>SocialMediaPlatformFactory</code> to deal with the creation of social media platform
+objects without the need of specifying the concrete class to construct.
+Thus, it follows the <a href="https://www.tutorialspoint.com/design_pattern/factory_pattern.htm">factory pattern</a> since the
+creation logic is abstracted away by the factory. The difference here to other implementations of the pattern is the
+use of an <em>abstract</em> class, <code>SocialMediaPlatform</code>, instead of the usual <em>interface</em>.</p>
+</div>
+<div class="paragraph">
+<p>In order to properly utilise the factory, a client needs to provide some form of specification:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">SocialMediaPlatformFactory</span> {
+    <span class="comment">// ... class variables, constructor ...</span>
+
+    <span class="directive">public</span> <span class="directive">static</span> SocialMediaPlatform getSocialMediaPlatform(<span class="predefined-type">String</span> type, Link link) <span class="directive">throws</span> IllegalValueException {
+        <span class="comment">// ... social media platform instance creation logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From the extract, a <code>String</code> data type and a <code>Link</code> object need to be provided by the caller when using the
+<code>getSocialMediaPlatform</code> method. The method will then return an instance of the available concrete classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AddPlatformCommand</code> makes use of the implementation of <code>EditCommand</code> as the foundation, editing the <code>Person</code> model
+to include the newly created social media platforms. Each platform is stored as an entry to the person&#8217;s platform map,
+with the key being the name of the platform. An example is shown below as an illustration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SocialMediaPlatformMapObjectDiagram.png" alt="SocialMediaPlatformMapObjectDiagram" width="650">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>The links provided by the user will be parsed within the <code>AddPlatformCommandParser</code> to convert them into <code>Link</code>
+objects. From there, <code>AddPlatformCommand</code> will create a new map and add the relevant social media platforms by
+calling the <code>getSocialMediaPlatform</code> method of <code>SocialMediaPlatformFactory</code> for object creation. To merge the updates
+with the targeted person, the command would also retrieve all of its information in order to create a new <code>Person</code>
+object before replacement is done. The sequence of the events is as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddPlatformCommandSequenceDiagram.png" alt="AddPlatformCommandSequenceDiagram" width="850">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>In the UI Component, the <code>PersonCard</code> will be updated to show the icons of the platforms added. Suppose the user want
+to add a <code>Facebook</code> profile to the first person. The <code>AddPlatformCommand</code> would be executed using the <code>addplatform</code>
+command word. As illustration, the user has successfully added a <code>Facebook</code> platform to the targeted person by typing
+<code>addplatform 4 l/www.facebook.com/david</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddPlatformToPersonDiagram.png" alt="AddPlatformToPersonDiagram" width="750">
+</div>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div class="paragraph">
+<p>Since the basis of <code>AddPlatformCommand</code> is heavily inspired by the <code>EditCommand</code>, interactions between the various
+components is exactly the same:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddPlatformCommandHighLevelSequenceDiagrams.png" alt="AddPlatformCommandHighLevelSequenceDiagrams" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-of-links-in-person-model"><a class="link" href="#aspect-storing-of-links-in-person-model">Aspect: Storing of Links in Person Model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create social media platform objects with the links as attributes and store into a map</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: High potential of implementing methods for interactions between the actual profile page using the corresponding API.</p>
+</li>
+<li>
+<p>Cons: Accessing and inputting of data will be more complex.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store using a set of links</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Ease of access to data.</p>
+</li>
+<li>
+<p>Cons: Can only be used for the displaying of pages, no room for other implementations.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-usage-of-interface-or-abstract-class"><a class="link" href="#aspect-usage-of-interface-or-abstract-class">Aspect: Usage of Interface or Abstract Class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have <code>SocialMediaPlatform</code> be an abstract class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows common methods to be used by classes that extends from it and still provide a means of ensuring critical methods that are abstract be implemented.</p>
+</li>
+<li>
+<p>Cons: Classes that want to make use of the implementations can only extend from it.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have <code>SocialMediaPlatform</code> be an interface</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher flexibility for classes since they can implement many interfaces.</p>
+</li>
+<li>
+<p>Cons: Limitations in sharing and utilisation of default methods between classes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 15:17:08 UTC
+Last updated 2018-04-14 14:06:24 UTC
 </div>
 </div>
 </body>
